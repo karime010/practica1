@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block contenido %}
+<body>
+    <main class="container">
+        <h1 class="text-center">Crea una cuenta</h1>
+        <h6 class="text-center">Es facil y rapido</h6>
+        <section>
+            <form>
+                <section class="row">
+                    <div class="col-6 mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="Apellido" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+                    </div>
+                </section>
+                <form></form>
+                    <div class="container">
+                        <label for="fecha" class="form-label">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha">
+                    </div>
+                    <div class="container">
+                        <label for="genero" class="form-label">Genero</label>
+                        <input type="radio" id="hombre" name="genero" value="hombre">
+                        <label for="hombre">Hombre</label>
+                        <input type="radio" id="mujer" name="genero" value="mujer">
+                        <label for="hombre">Mujer</label>
+                        <input type="radio" id="otro" name="genero" value="otro">
+                        <label for="hombre">Otro</label>
+                    </div>
+                    <div class="container">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Correo electronico">
+                    </div>
+                    <div class="container">
+                        <label for="Contraseña" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="contraseña" placeholder="Coloca una contraseña">
+                    </div>
+                <section class="row text-center">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-success">Registrarte</button>
+                    </div>
+                
+
+
+            </form>
+        </section>
+    </main>
+</body>
+</html> 
+{% endif %}
+
+{% endblock %}

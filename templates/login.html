@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block contenido %}
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow p-4" style="width: 400px;">
+        <form method="POST" action="/login">
+            <input type="email" name="email" class="form-control mb-3" placeholder="Correo" required>
+
+            <input type="password" name="password" class="form-control mb-3" placeholder="Contraseña">
+            
+            <button type="submit" class="btn btn-primary w-100">Iniciar sesion</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %} 
+  
