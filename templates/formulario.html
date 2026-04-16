@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {% block contenido %}
 
-<div class="container d-flex justify-content-center align-items-center vh-100">
+
+<div class="container justify-content-center align-items-center vh-100">
+    <h1 class="mb-4"><strong>Registrate</strong></h1>
     <div class="card shadow p-4" style="width: 400px;">
+        {% if error %}
+        <p style="color:red;">{{ error }}</p>
+        {% endif %}
         <form method="POST" action="/registro">
             <input type="text" name="nombre" class="form-control mb-3" placeholder="Nombre" required>
 
@@ -12,9 +17,15 @@
 
             <input type="password" name="password" class="form-control mb-3" placeholder="Contraseña">
 
+            <input type="password" name="confirm_password" class="form-control mb-3" placeholder="Confirma la contraseña">
+
             <button type="submit" class="btn btn-primary w-100">Registrate</button>
         </form>
     </div>
 </div>
+
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
 
 {% endblock %} 

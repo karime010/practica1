@@ -12,7 +12,7 @@ def main():
 
 
 class GestorTareas:
-    def __init__(self, uri: str = 'mongodb://localhost:27017/'):
+    def __init__(self, uri: str = "mongodb+srv://karimeDB:cruzsilvaari091217@clusterkarimecruz.eb4k36a.mongodb.net/?appName=ClusterKarimeCruz"):
         """Inicializar conexión a MongoDB"""
         try:
             self.cliente = MongoClient(uri, serverSelectionTimeoutMS=5000)
@@ -34,12 +34,13 @@ class GestorTareas:
         self.tareas.create_index([("usuario_id", 1), ("fecha_creacion", -1)])
         self.tareas.create_index("estado")
     
-    def crear_usuario(self, nombre: str, email: str) -> Optional[str]:
+    def crear_usuario(self, nombre: str, email: str, password: str) -> Optional[str]:
         """Crear un nuevo usuario"""
         try:
             resultado = self.usuarios.insert_one({
                 "nombre": nombre,
                 "email": email,
+                "password": password,
                 "fecha_registro": datetime.now(),
                 "activo": True
             })
