@@ -3,8 +3,11 @@
 
 
 <div class="container justify-content-center align-items-center vh-100">
-    <h1 class="mb-4"><strong>Registrate</strong></h1>
     <div class="card shadow p-4" style="width: 400px;">
+        <div class="text-center">
+            <h1 class="mb-4"><strong>Registrate</strong></h1>
+            <img src="static/OIP.webp" class="rounded" alt="imagen de logotipo de persona">
+        </div>
         {% if error %}
         <p style="color:red;">{{ error }}</p>
         {% endif %}
@@ -19,7 +22,11 @@
 
             <input type="password" name="confirm_password" class="form-control mb-3" placeholder="Confirma la contraseña">
 
-            <button type="submit" class="btn btn-primary w-100">Registrate</button>
+            <button type="submit" class="btn btn-dark w-100">Registrate</button>
+            <p>
+                No tienes una cuenta?
+                <a href=""
+            </p>
         </form>
     </div>
 </div>

@@ -50,12 +50,9 @@ def login():
     return render_template("login.html")
 
 
-@app.route(("/tareas") methods=["GET", "POST"])
-def tareas(usuario_id):
-    
-
-
-
+@app.route("/tareas", methods=["GET", "POST"])
+def tareas():
+    return render_template("/login.html")
 
 @app.route("/logout")
 def logout():
