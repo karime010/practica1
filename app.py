@@ -8,18 +8,59 @@ gestor = GestorTareas()
 
 
 
-
-from flask import Flask, render_template, request, redirect, url_for
-
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")  #Abre la pagina principal
 def index():
-    if request.method == "POST":
-        return redirect(url_for("login"))
-    return render_template("formulario.html")
+    return render_template("registro.html")
 
-@app.route("/login")
+#Muestra el formulario de registro y procesa los datis enviados por el usuario.
+@app.route("/registror", methods=["GET", "POST"])
+def registro():
+    if request.method == "POST":
+        nombre = request.form["nombre"]
+        email = request.form["email"] 
+        password = request.form["password"]
+        confirm_password = request.form["confirm_password"]
+        
+        if password !=confirm_password:
+            return render_template("registro.html", error="Las contraseñas no coinciden!")
+        gestor.crear_usuario(nombre, email, password)
+        return redirect("login")
+    return render_template("registro.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
 def login():
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
+
+        usuario = gestor.usuarios.find_one({"email": email})
+
+        if not usuario :  
+            return render_template("login.html", error="Usuario no encontrado")
+            
+        if "password" not in usuario:
+            return render_template("login.html", error="Usuario no tiene contraseña")
+        if usuario["password"] == password:
+            session["usuario_id"] = str(usuario["_id"])
+            return redirect("/registro")
+        else:
+            return render_template("login.html", error="Contraseña incorrecta")
+
     return render_template("login.html")
+
+
+@app.route(("/tareas") methods=["GET", "POST"])
+def tareas(usuario_id):
+    
+
+
+
+
+@app.route("/logout")
+def logout():
+    session.pop("usuario_id", None)
+    return redirect("login")
 
 
 if __name__ == "__main__":
