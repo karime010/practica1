@@ -12,7 +12,7 @@ def main():
 
 
 class GestorTareas:
-    def __init__(self, uri: str = 'mongodb://localhost:27017/'):
+    def __init__(self, uri: str = 'mongodb+srv://karimeDB:cruzsilvaari091217@clusterkarimecruz.eb4k36a.mongodb.net/?appName=ClusterKarimeCruz'):
         """Inicializar conexión a MongoDB"""
         try:
             self.cliente = MongoClient(uri, serverSelectionTimeoutMS=5000)
