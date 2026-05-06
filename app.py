@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, session
+from flask import Flask, flash, redirect, render_template, request, session, url_for
 from gestor_tareas import GestorTareas
 
 app = Flask(__name__) 
@@ -43,21 +43,23 @@ def login():
             return render_template("login.html", error="Usuario no tiene contraseña")
         if usuario["password"] == password:
             session["usuario_id"] = str(usuario["_id"])
-            return redirect("/registro")
+            return redirect("/acercade")
         else:
             return render_template("login.html", error="Contraseña incorrecta")
 
     return render_template("login.html")
 
 
-@app.route("/tareas", methods=["GET", "POST"])
-def tareas():
-    return render_template("/login.html")
+@app.route("/acercade", methods=["GET", "POST"])
+def acercade():
+    return render_template("acercade.html")
 
-@app.route("/logout")
-def logout():
-    session.pop("usuario_id", None)
-    return redirect("login")
+@app.route('/cerrarsesion')
+def cerrarsesion():
+    session.clear()
+    flash('Haz cerrado sesion', 'success')
+    return redirect(url_for('login'))
+
 
 
 if __name__ == "__main__":
