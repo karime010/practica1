@@ -52,6 +52,10 @@ def login():
 
 @app.route("/acercade", methods=["GET", "POST"])
 def acercade():
+    if request.method == "POST":
+        titulo = request.form["titulo"]
+        descripcion = request.form["descripcion"]
+        usuario_id = session.get("usuario_id")
     return render_template("acercade.html")
 
 @app.route('/cerrarsesion')
